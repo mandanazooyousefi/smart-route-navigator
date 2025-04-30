@@ -1,4 +1,4 @@
----
+
 
 ## Student Info
 
@@ -12,7 +12,7 @@
 
 A simple web app to graphically display the **minimum path** between two points chosen by the user through **Dijkstra's Algorithm** on a responsive **Leaflet. js** map.
 
----
+
 
 ## Project Overview
 
@@ -20,7 +20,7 @@ A simple web app to graphically display the **minimum path** between two point
 **Project Name:** Intelligent Route Navigator
 **GOAL:** Implement Dijkstra’s Algorithm on a Leaflet map in order to determine and draw the shortest route between any two nodes.
 
----
+
 
 ## ✨ Features
 
@@ -44,7 +44,7 @@ smart-route-finder/
 ├── README. md\ # Project description and how to use it (this file)
 ```
 
----
+
 
 ## 🛠️ Technologies Used
 
@@ -53,7 +53,7 @@ smart-route-finder/
 - Custom Dijkstra implemented in JavaScript
 \- Live Server (VS Code extension)
 
----
+
 
 ## ▶️ How to Run
 
@@ -63,7 +63,7 @@ smart-route-finder/
 4. Right-click on `index. html` → *"Open with Live Server"*.
 5. Click on the map to select a start and end node -- shortest path will be displayed.
 
----
+
 
 ## 🔖 Sample Graph (graph-data. json)
 
