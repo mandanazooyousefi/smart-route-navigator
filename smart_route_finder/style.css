@@ -1,0 +1,21 @@
+/* Sayfanın genel stilleri */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  /* Harita alanı */
+  #map {
+    height: 90vh; /* Ekranın %90 yüksekliği kadar */
+    width: 100%; /* Tam genişlik */
+    margin: 0 auto;
+  }
+  
+  /* Başlık */
+  h1 {
+    margin: 10px 0;
+    font-size: 24px;
+  }
+  

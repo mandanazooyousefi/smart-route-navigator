@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Route Finder</title>
+
+  <!-- Leaflet CSS (bütünlük olmadan) -->
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+
+  <!-- Harita boyutu için stil -->
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart Route Finder</h1>
+  <div id="map"></div>
+
+  <!-- Leaflet JS (bütünlük olmadan) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Dijkstra algoritması -->
+  <script src="dijkstra.js"></script>
+
+  <!-- Uygulama betiği -->
+  <script src="script.js"></script>
+</body>
+</html>
