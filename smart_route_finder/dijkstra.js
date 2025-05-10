@@ -3,7 +3,7 @@ function dijkstra(graph, startNode, endNode) {
     let prev = {};
     let unvisited = new Set(graph.nodes);
   
-    // Başlangıçta tüm düğümler sonsuz uzaklıkta, sadece başlangıç noktası 0
+   
     for (let node of graph.nodes) {
       distances[node] = Infinity;
       prev[node] = null;
@@ -11,7 +11,7 @@ function dijkstra(graph, startNode, endNode) {
     distances[startNode] = 0;
   
     while (unvisited.size > 0) {
-      // En küçük mesafeye sahip düğümü bul
+      
       let currentNode = null;
       for (let node of unvisited) {
         if (currentNode === null || distances[node] < distances[currentNode]) {
@@ -20,10 +20,10 @@ function dijkstra(graph, startNode, endNode) {
       }
   
       if (distances[currentNode] === Infinity) {
-        break; // Ulaşılamayan bir düğüm varsa çık
+        break; 
       }
   
-      // Komşuları güncelle
+      
       for (let neighbor of graph.edges[currentNode]) {
         let alt = distances[currentNode] + neighbor.weight;
         if (alt < distances[neighbor.node]) {
@@ -35,11 +35,11 @@ function dijkstra(graph, startNode, endNode) {
       unvisited.delete(currentNode);
   
       if (currentNode === endNode) {
-        break; // Hedefe ulaştıysak dur
+        break; 
       }
     }
   
-    // Yolu oluştur
+    
     let path = [];
     let current = endNode;
     while (current !== null) {
