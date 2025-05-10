@@ -4,28 +4,87 @@
   <meta charset="UTF-8">
   <title>Smart Route Finder</title>
 
-  <!-- Leaflet CSS (bütünlük olmadan) -->
+  <!-- Leaflet CSS -->
   <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
 
-  <!-- Harita boyutu için stil -->
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
   <style>
     #map {
       height: 500px;
       width: 100%;
     }
+    button {
+      margin: 10px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
   <h1>Smart Route Finder</h1>
+  <button onclick="resetRoute()">Clear Points</button>
   <div id="map"></div>
 
-  <!-- Leaflet JS (bütünlük olmadan) -->
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- Dijkstra algoritması -->
-  <script src="dijkstra.js"></script>
+  <!-- Leaflet Routing Machine JS -->
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 
-  <!-- Uygulama betiği -->
-  <script src="script.js"></script>
+  <script>
+    let map;
+    let routingControl = null;
+    let waypoints = [];
+
+    function initMap() {
+      map = L.map('map').setView([51.505, -0.09], 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      map.on('click', onMapClick);
+    }
+
+    function onMapClick(e) {
+      waypoints.push(e.latlng);
+      L.marker(e.latlng).addTo(map)
+        .bindPopup(`Point ${waypoints.length}`)
+        .openPopup();
+
+      if (waypoints.length >= 2) {
+        drawRoute();
+      }
+    }
+
+    function drawRoute() {
+      if (routingControl) {
+        map.removeControl(routingControl);
+      }
+
+      routingControl = L.Routing.control({
+        waypoints: waypoints,
+        routeWhileDragging: false
+      }).addTo(map);
+    }
+
+    function resetRoute() {
+      waypoints = [];
+      if (routingControl) {
+        map.removeControl(routingControl);
+        routingControl = null;
+      }
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          map.removeLayer(layer);
+        }
+      });
+      alert("All points cleared. You can start selecting again.");
+    }
+
+    window.onload = initMap;
+  </script>
 </body>
 </html>
